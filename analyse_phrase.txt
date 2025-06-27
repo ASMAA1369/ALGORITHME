@@ -1,0 +1,37 @@
+Algorithme AnalysePhrase 
+Début
+    // Initialisation des compteurs
+    nbCar ← 0
+    nbMot ← 0
+    nbVoy ← 0
+    precedent ← ' '   // Pour détecter le début d'un mot
+
+    Afficher "Saisir une phrase se terminant par un point :"
+
+    Répéter
+        Lire car
+
+        // Tant qu'on n'a pas atteint le point final
+        Si car ≠ '.' Alors
+            nbCar ← nbCar + 1
+
+            // Vérification des voyelles (en minuscules ou majuscules)
+            Si car ∈ ['a','e','i','o','u','y','A','E','I','O','U','Y','à','â','ä','é','è','ê','ë','î','ï','ô','ö','û','ü','ÿ'] Alors
+                nbVoy ← nbVoy + 1
+            FinSi
+
+            // Détection du début d’un mot (si caractère actuel ≠ espace et précédent = espace)
+            Si car ≠ ' ' ET precedent = ' ' Alors
+                nbMot ← nbMot + 1
+            FinSi
+        FinSi
+
+        precedent ← car   // Mettre à jour le caractère précédent
+
+    Jusqu'à car = '.'
+
+    // Affichage des résultats
+    Afficher "Nombre de caractères : ", nbCar
+    Afficher "Nombre de mots       : ", nbMot
+    Afficher "Nombre de voyelles   : ", nbVoy
+Fin
